@@ -12,7 +12,7 @@ Progress is tracked by the Lead Architect and reviewed by Carver. Percentages re
 
 ## Overall Progress
 
-Current overall progress: 60%
+Current overall progress: 61%
 
 ## Area Progress
 
@@ -20,7 +20,7 @@ Current overall progress: 60%
 | --- | --- | ---: | --- | --- |
 | Project setup | Codex | 50% | Monorepo docs, principles, worklist, naming, and role expansion initialized | Generate real runnable app/server/admin/homepage skeletons |
 | Product planning | James | 40% | MVP scope, policies, benchmark audit, visible surface specs, identity display rules, and store screenshot script drafted | Convert visible surface specs into app/admin UI tasks |
-| Mobile app | Poincare | 83% | Android debug APK builds; iOS project exists; Mac IPA build script/export options are prepared; auth gate with test1/test1 login, Korean-default language switch, benchmark-style signup conditions, and a full mock-screen catalog is implemented; app runtime selects mock or REST preview mode; twelve Flutter tests pass | Install APK on device/emulator and run IPA build on macOS/Xcode |
+| Mobile app | Poincare | 84% | Android debug APK builds; iOS project exists; Mac IPA build script/export options are prepared; auth gate with test1/test1 login, Korean-default language switch, benchmark-style signup conditions, and a full mock-screen catalog with tappable detail pages is implemented; app runtime selects mock or REST preview mode; thirteen Flutter tests pass | Install APK on device/emulator and run IPA build on macOS/Xcode |
 | Backend API | Dalton | 56% | Wallet ledger, chat send, admin support queue, and admin deletion queue preview endpoints added and smoke-checked on localhost:4331 | Replace preview routing with NestJS controllers |
 | Admin web | Mason | 45% | Admin preview now covers login, dashboard, review queue, user list, masked user detail, reports, wallet guardrails, and suspension history | Replace preview with Next.js app-router pages and API adapters |
 | Homepage web | Lena + Dalton | 42% | Homepage support form preview added and support/deletion backend endpoints verified | Wire real form submission after Next app build |
@@ -109,6 +109,8 @@ Current overall progress: 60%
 - Poincare/Codex removed vendor-facing internal wording such as mock/test/benchmark-server notices from visible mobile UI labels, updated widget assertions, passed 12 Flutter tests, and rebuilt the Android debug APK.
 - Lena/Codex fixed the homepage preview routing so `http://localhost:3005/` now serves the public Hashdate service page while `http://localhost:3005/work-status` remains the internal development/status page; verified both routes return distinct content.
 - Lena/Codex updated the public homepage with Korean-default language switching, wired all app-download CTAs to `https://cruise.suaveforge.com/app-debug.apk`, changed unfinished navigation items to show a `개발중입니다.` alert without routing, added static export settings, added `apps/homepage/public/CNAME` for `date.suaveforge.com`, and created a GitHub Pages deployment workflow.
+
+- Poincare/Codex converted mobile menu catalog rows into tappable detail pages with screen purpose, member-facing content, connected flow, and development notification states; installed Microsoft OpenJDK 17 after restart, configured Flutter to use it, passed thirteen Flutter tests, and rebuilt the Android debug APK.
 
 ## Lead Defaults
 

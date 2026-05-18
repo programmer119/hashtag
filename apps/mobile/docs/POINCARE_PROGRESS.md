@@ -2,7 +2,7 @@
 
 Owner: Poincare / Mobile App Agent
 
-Current progress: 83%
+Current progress: 84%
 
 ## 2026-05-18
 
@@ -42,6 +42,15 @@ Expanded benchmark-style visible mock coverage:
 - Flutter widget coverage now checks the Korean default, English switch, and benchmark mock catalog navigation.
 
 Twelve Flutter tests passed, and the Android debug APK was rebuilt after the language and mock-screen coverage work.
+
+Expanded the menu catalog into tappable detail pages:
+
+- Each catalog row now opens a detail screen with the screen purpose, member-facing content, connected flow, and a development notification action.
+- Added widget coverage for opening a catalog detail page from the menu.
+- Installed Microsoft OpenJDK 17 after the restart and configured Flutter to use it for Android Gradle builds.
+- Thirteen Flutter tests passed, and the Android debug APK was rebuilt after the detail-page work.
+
+Progress moved from 83% to 84% because the remaining catalog surfaces are now navigable screens instead of static list rows. It does not move higher until a connected Android device/emulator install smoke pass and macOS/Xcode IPA build evidence exist.
 
 ## 2026-05-17
 

@@ -72,6 +72,20 @@ void main() {
     expect(find.text('고객센터'), findsOneWidget);
   });
 
+  testWidgets('Hashdate menu rows open detail pages', (tester) async {
+    await pumpAndLogin(tester);
+
+    await tester.tap(find.byIcon(Icons.menu));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.byIcon(Icons.check_circle_outline).first);
+    await tester.pumpAndSettle();
+
+    expect(find.text('화면 목적'), findsOneWidget);
+    expect(find.text('회원에게 보이는 내용'), findsOneWidget);
+    expect(find.text('알림 받기'), findsOneWidget);
+  });
+
   testWidgets('Hashdate mock app opens discovery and unlocks once',
       (tester) async {
     await pumpAndLogin(tester);

@@ -1246,8 +1246,108 @@ class _MockScreenSection extends StatelessWidget {
               title: Text(row.title),
               subtitle: Text(row.description),
               trailing: const Icon(Icons.chevron_right),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute<void>(
+                    builder: (_) => _MenuDetailPage(
+                      groupTitle: section.title,
+                      row: row,
+                    ),
+                  ),
+                );
+              },
             ),
         ],
+      ),
+    );
+  }
+}
+
+class _MenuDetailPage extends StatelessWidget {
+  const _MenuDetailPage({required this.groupTitle, required this.row});
+
+  final String groupTitle;
+  final _MockScreenRow row;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text(row.title)),
+      body: ListView(
+        padding: const EdgeInsets.all(16),
+        children: [
+          Text(
+            groupTitle,
+            style: Theme.of(context).textTheme.labelLarge?.copyWith(
+                  color: Theme.of(context).colorScheme.primary,
+                  fontWeight: FontWeight.w900,
+                ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            row.title,
+            style: Theme.of(context).textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.w900,
+                ),
+          ),
+          const SizedBox(height: 12),
+          _DetailInfoCard(
+            icon: Icons.touch_app_outlined,
+            title: '화면 목적',
+            description: row.description,
+          ),
+          _DetailInfoCard(
+            icon: Icons.visibility_outlined,
+            title: '회원에게 보이는 내용',
+            description: '${row.title}에 필요한 정보와 다음 행동을 한 화면에서 확인합니다.',
+          ),
+          _DetailInfoCard(
+            icon: Icons.route_outlined,
+            title: '연결 흐름',
+            description: '$groupTitle 메뉴에서 관련 기능으로 이어집니다.',
+          ),
+          const SizedBox(height: 12),
+          FilledButton.tonalIcon(
+            onPressed: () {
+              ScaffoldMessenger.of(context).showSnackBar(
+                const SnackBar(content: Text('개발중입니다.')),
+              );
+            },
+            icon: const Icon(Icons.notifications_none),
+            label: const Text('알림 받기'),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class _DetailInfoCard extends StatelessWidget {
+  const _DetailInfoCard({
+    required this.icon,
+    required this.title,
+    required this.description,
+  });
+
+  final IconData icon;
+  final String title;
+  final String description;
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      elevation: 0,
+      margin: const EdgeInsets.only(bottom: 12),
+      child: ListTile(
+        leading: Icon(icon),
+        title: Text(
+          title,
+          style: const TextStyle(fontWeight: FontWeight.w900),
+        ),
+        subtitle: Padding(
+          padding: const EdgeInsets.only(top: 6),
+          child: Text(description),
+        ),
       ),
     );
   }

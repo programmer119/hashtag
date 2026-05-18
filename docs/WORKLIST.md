@@ -12,7 +12,7 @@ Progress rule: percentages move only when tangible artifacts are created, review
 | --- | --- | --- | ---: |
 | Codex | Lead Architect | Architecture, integration, progress tracking | 24% |
 | James | Product / Policy / Copy | Product specs, benchmark audits, policies, copy | 40% |
-| Poincare | Mobile App | Flutter app | 83% |
+| Poincare | Mobile App | Flutter app | 84% |
 | Dalton | Backend/API | Mobile, admin, homepage backend APIs | 56% |
 | Mason | Admin Frontend | Admin web frontend | 45% |
 | Lena | Homepage Frontend | Public homepage frontend | 42% |
@@ -124,7 +124,8 @@ Verification:
 - Mobile auth gate now includes benchmark-style login/signup entry, prefilled `test1 / test1` credentials, and male/female signup condition screens before entering the main app.
 - Mobile start now defaults to Korean and includes a Korean/English language switch.
 - Mobile menu now includes a benchmark mock-screen catalog for signup/verification, matching, communication, payment, account settings, support, acquaintance blocking, notification, and operations-facing surfaces.
-- Flutter widget tests now pass across 12 auth, language, catalog, discovery, wallet, profile, chat, and safety flows; the Android debug APK was rebuilt after the latest mock-screen coverage work.
+- Flutter widget tests now pass across 13 auth, language, catalog, catalog-detail, discovery, wallet, profile, chat, and safety flows; the Android debug APK was rebuilt after the latest mock-screen coverage work.
+- Mobile catalog rows now open tappable detail pages that show the screen purpose, member-facing content, connected flow, and a development notification action.
 
 Next:
 

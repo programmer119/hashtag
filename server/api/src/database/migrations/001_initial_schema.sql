@@ -1,0 +1,2 @@
+-- Initial schema placeholder.
+-- See server/api/docs/DATABASE_MIGRATIONS.md for the ordered migration plan.

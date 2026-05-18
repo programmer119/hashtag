@@ -1,0 +1,16 @@
+{
+  "name": "@hashdate/api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Hashdate premium dating app backend API scaffold.",
+  "scripts": {
+    "dev:preview": "node scripts/dev-server.mjs",
+    "dev": "nest start --watch",
+    "build": "nest build",
+    "start": "node dist/main.js",
+    "lint": "eslint \"src/**/*.ts\"",
+    "test": "jest"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

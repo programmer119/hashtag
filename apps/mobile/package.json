@@ -1,0 +1,13 @@
+{
+  "name": "@hashdate/mobile-preview",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev:preview": "node scripts/dev-server.mjs",
+    "toolchain:check": "node scripts/toolchain-check.mjs",
+    "apk:readiness": "node scripts/apk-readiness.mjs",
+    "apk:build-debug": "node scripts/build-debug-apk.mjs",
+    "apk:install-smoke": "node scripts/install-smoke.mjs",
+    "ipa:build-mac": "bash scripts/build-ios-ipa.sh"
+  }
+}

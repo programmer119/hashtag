@@ -1,4 +1,5 @@
 import { createServer } from 'node:http';
+import { readFileSync } from 'node:fs';
 
 const port = Number(process.env.PORT || 3000);
 
@@ -261,7 +262,7 @@ const page = `<!doctype html>
 createServer((req, res) => {
   if (req.url === '/') {
     res.writeHead(200, { 'content-type': 'text/html; charset=utf-8' });
-    res.end(servicePage);
+    res.end(readFileSync(new URL('../static/index.html', import.meta.url), 'utf8'));
     return;
   }
 

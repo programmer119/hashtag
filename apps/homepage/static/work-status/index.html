@@ -1,0 +1,207 @@
+﻿<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hashdate Work Status</title>
+    <style>
+      :root {
+        --ink: #14201d;
+        --muted: #5f6f6a;
+        --paper: #fbfaf7;
+        --panel: #ffffff;
+        --line: #dce5df;
+        --brand: #0f7b68;
+        --mint: #dff4ec;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      header {
+        border-bottom: 1px solid var(--line);
+        background: rgba(251, 250, 247, 0.94);
+      }
+      .bar, main {
+        width: min(1120px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+      .bar {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 850;
+      }
+      .mark {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--brand);
+        color: white;
+      }
+      nav {
+        display: flex;
+        gap: 16px;
+        color: var(--muted);
+      }
+      main {
+        padding: 70px 0 90px;
+      }
+      .eyebrow {
+        margin: 0 0 12px;
+        color: var(--brand);
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2.6rem, 7vw, 5rem);
+        line-height: 0.96;
+      }
+      h2 {
+        margin-top: 54px;
+        font-size: clamp(1.8rem, 4vw, 2.7rem);
+      }
+      p {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      .lead {
+        max-width: 760px;
+        font-size: 1.2rem;
+      }
+      .table {
+        display: grid;
+        gap: 8px;
+      }
+      .row {
+        display: grid;
+        grid-template-columns: 0.9fr 1.2fr 0.7fr 1.7fr;
+        gap: 14px;
+        align-items: center;
+        padding: 14px 16px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: var(--panel);
+        color: var(--muted);
+      }
+      .row strong, .row span:first-child { color: var(--ink); }
+      .head {
+        background: var(--mint);
+        color: var(--ink);
+        font-weight: 800;
+      }
+      .compact .row {
+        grid-template-columns: 1fr 0.5fr 2fr;
+      }
+      .devinfo .row {
+        grid-template-columns: 0.9fr 1.1fr 1.8fr;
+      }
+      ul {
+        display: grid;
+        gap: 10px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+      @media (max-width: 780px) {
+        .bar { align-items: flex-start; flex-direction: column; padding: 16px 0; }
+        .row, .compact .row, .devinfo .row { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="bar">
+        <div class="brand"><span class="mark">#</span><span>Hashdate</span></div>
+        <nav><span>Download</span><span>Safety</span><strong>Work status</strong><span>Support</span></nav>
+      </div>
+    </header>
+    <main>
+      <p class="eyebrow">Project operations</p>
+      <h1>Work status</h1>
+      <p class="lead">Artifact-backed progress for the Hashdate build. Percentages move only when files, specs, runnable code, builds, tests, or reviewed outputs actually change.</p>
+
+      <h2>Team progress</h2>
+      <div class="table">
+        <div class="row head"><span>Name</span><span>Role</span><span>Progress</span><span>Current ownership</span></div>
+        <div class="row"><span>Codex</span><span>Lead Architect</span><strong>22%</strong><span>Architecture, integration, progress tracking</span></div>
+        <div class="row"><span>James</span><span>Product / Policy / Copy</span><strong>32%</strong><span>Benchmark audit, policy, copy</span></div>
+        <div class="row"><span>Poincare</span><span>Mobile App</span><strong>22%</strong><span>Flutter-ready app screens and mock flow</span></div>
+        <div class="row"><span>Dalton</span><span>Backend/API</span><strong>18%</strong><span>Mobile, admin, and homepage API planning</span></div>
+        <div class="row"><span>Mason</span><span>Admin Frontend</span><strong>12%</strong><span>Admin web ownership and route standards</span></div>
+        <div class="row"><span>Lena</span><span>Homepage Frontend</span><strong>36%</strong><span>Public website pages and Next.js skeleton</span></div>
+        <div class="row"><span>Carver</span><span>QA / Release</span><strong>24%</strong><span>QA matrix, release readiness, blockers</span></div>
+      </div>
+
+      <h2>Area progress</h2>
+      <div class="table compact">
+        <div class="row head"><span>Area</span><span>Progress</span><span>Status</span></div>
+        <div class="row"><span>Overall</span><strong>58%</strong><span>Artifact-backed project readiness</span></div>
+        <div class="row"><span>Project setup</span><strong>50%</strong><span>Monorepo docs, principles, roles, and naming initialized</span></div>
+        <div class="row"><span>Product planning</span><strong>32%</strong><span>MVP scope, policies, and benchmark audit drafted</span></div>
+        <div class="row"><span>Mobile app</span><strong>79%</strong><span>Flutter app, Android debug APK, REST preview mode, and iOS IPA build path prepared</span></div>
+        <div class="row"><span>Backend API</span><strong>18%</strong><span>API planning and support/content modules drafted</span></div>
+        <div class="row"><span>Admin web</span><strong>12%</strong><span>Admin ownership and worklist documented</span></div>
+        <div class="row"><span>Homepage web</span><strong>36%</strong><span>Pages, shell, package/config, sitemap, robots, and status page created</span></div>
+        <div class="row"><span>QA and release</span><strong>24%</strong><span>Verification rules, smoke checklist, and blocker register added</span></div>
+      </div>
+
+      <h2>Development info</h2>
+      <div class="table devinfo">
+        <div class="row head"><span>Item</span><span>Current value</span><span>Notes</span></div>
+        <div class="row"><span>Mobile stack</span><strong>Flutter 3.41.9 / Dart 3.11.5</strong><span>Flutter is the app framework; Dart is the language.</span></div>
+        <div class="row"><span>Mobile UI entry</span><strong>apps/mobile/lib/app/hashdate_mock_app.dart</strong><span>Edit Flutter widgets here for the current mock UI, auth gate, tabs, and benchmark screen catalog.</span></div>
+        <div class="row"><span>Mobile app entry</span><strong>apps/mobile/lib/main.dart</strong><span>Flutter starts here, then loads HashdateAppRoot and runtime repository mode.</span></div>
+        <div class="row"><span>Mobile state/features</span><strong>apps/mobile/lib/features/*/controllers</strong><span>Session, discovery, profile, chat, wallet, and safety UI actions are separated into feature controllers.</span></div>
+        <div class="row"><span>Mobile runtime packages</span><strong>flutter SDK only</strong><span>No third-party runtime Flutter packages are currently used; the app uses Flutter Material widgets.</span></div>
+        <div class="row"><span>Mobile dev packages</span><strong>flutter_test, flutter_lints</strong><span>Used for widget/API/repository tests and lint rules.</span></div>
+        <div class="row"><span>Likely mobile libraries</span><strong>go_router, flutter_riverpod, dio</strong><span>High-probability additions for navigation/deep links, state management, and production API calls.</span></div>
+        <div class="row"><span>Model/codegen candidates</span><strong>freezed, json_serializable</strong><span>Likely additions for immutable models, typed API payloads, and safer JSON mapping.</span></div>
+        <div class="row"><span>Media/UI candidates</span><strong>cached_network_image, flutter_svg, image_picker</strong><span>Likely additions for profile image caching, SVG assets, profile photos, and verification document uploads.</span></div>
+        <div class="row"><span>Payment candidate</span><strong>in_app_purchase</strong><span>Likely Apple App Store and Google Play billing integration for diamonds/hearts.</span></div>
+        <div class="row"><span>Push/error candidates</span><strong>firebase_messaging, sentry_flutter</strong><span>Likely additions for push notifications and production crash/error monitoring.</span></div>
+        <div class="row"><span>Animation candidates</span><strong>lottie, rive</strong><span>Optional additions for onboarding, empty states, premium effects, and polished micro-interactions.</span></div>
+        <div class="row"><span>Chart/form candidates</span><strong>fl_chart, flutter_form_builder</strong><span>Optional additions for admin-style charts in shared Flutter surfaces and complex signup/verification forms.</span></div>
+        <div class="row"><span>Homepage stack</span><strong>Next.js 15 / React 19 / TypeScript 5</strong><span>Declared for the future real Next.js app-router build.</span></div>
+        <div class="row"><span>Homepage preview server</span><strong>apps/homepage/scripts/dev-server.mjs</strong><span>This dependency-free server powers the current localhost work-status preview.</span></div>
+        <div class="row"><span>Homepage packages</span><strong>next, react, react-dom</strong><span>External runtime libraries declared for the homepage package.</span></div>
+        <div class="row"><span>Frontend scope</span><strong>Flutter mobile + Next.js web</strong><span>Flutter owns iOS/Android app UI; Next.js owns homepage and future admin web UI.</span></div>
+        <div class="row"><span>Backend scope</span><strong>Node.js API preview now; NestJS-style API planned</strong><span>Current preview APIs are dependency-free Node scripts. Production backend should own auth, verification, matching, chat, wallet, payments, reports, admin, and audit logic.</span></div>
+        <div class="row"><span>Database scope</span><strong>PostgreSQL planned</strong><span>Production DB should store users, profiles, verification status, matching state, wallet ledger, reports, admin audit logs, and structured behavior logs.</span></div>
+        <div class="row"><span>Cache/queue scope</span><strong>Redis planned</strong><span>Use for sessions, rate limits, short-lived OTP state, queues, locks, and async worker coordination.</span></div>
+        <div class="row"><span>Object storage scope</span><strong>AWS S3 + KMS planned</strong><span>Verification document images should be encrypted, reviewed through controlled admin access, then destroyed by retention policy.</span></div>
+        <div class="row"><span>Payment scope</span><strong>Apple/Google in-app purchase planned</strong><span>Digital diamonds/hearts should use App Store and Google Play billing, with backend receipt validation and ledger recording.</span></div>
+        <div class="row"><span>Android min SDK</span><strong>API 24</strong><span>Android 7.0 Nougat and newer can install the current debug APK.</span></div>
+        <div class="row"><span>Android target / compile SDK</span><strong>API 36 / API 36</strong><span>Current Flutter Gradle defaults are used for target and compile SDK.</span></div>
+        <div class="row"><span>Java / Gradle</span><strong>Java 17 / Gradle 8.14</strong><span>Used by the Android build path.</span></div>
+        <div class="row"><span>Android application ID</span><strong>com.example.hashdate_mobile</strong><span>Temporary debug value; must become a production package name before store release.</span></div>
+        <div class="row"><span>Android APK</span><strong>build/app/outputs/flutter-apk/app-debug.apk</strong><span>Debug APK exists and is rebuilt from Flutter CLI.</span></div>
+        <div class="row"><span>iOS IPA</span><strong>build/ios/ipa/*.ipa</strong><span>Mac/Xcode signing path is prepared; Windows cannot produce an installable IPA.</span></div>
+        <div class="row"><span>Client company</span><strong>Not disclosed</strong><span>The brief names no company; current owner is tracked as project owner/client.</span></div>
+      </div>
+
+      <h2>Recent updates</h2>
+      <ul>
+        <li>No-question autonomous execution mode is active.</li>
+        <li>Hashdate is the working product name.</li>
+        <li>Homepage public routes include the work status page.</li>
+        <li>Mobile mock placeholders exist for core app flows.</li>
+        <li>QA tracks external owner blockers separately from implementation work.</li>
+      </ul>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hashdate</title>
+    <meta name="description" content="검증 기반 프리미엄 데이팅 앱 Hashdate." />
+    <style>
+      :root {
+        --ink: #14201d;
+        --muted: #5f6f6a;
+        --paper: #fbfaf7;
+        --panel: #ffffff;
+        --line: #dce5df;
+        --brand: #0f7b68;
+        --brand-dark: #0a574a;
+        --mint: #dff4ec;
+        --shadow: 0 22px 70px rgba(20, 32, 29, 0.12);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        min-width: 320px;
+        background: var(--paper);
+        color: var(--ink);
+        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+      a { color: inherit; text-decoration: none; }
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(220, 229, 223, 0.84);
+        background: rgba(251, 250, 247, 0.92);
+        backdrop-filter: blur(18px);
+      }
+      .bar, .hero-inner, .section, .footer-inner {
+        width: min(1120px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+      .bar {
+        min-height: 72px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 850;
+      }
+      .mark {
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        background: var(--brand);
+        color: white;
+        font-weight: 900;
+      }
+      nav {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+      nav button {
+        border: 0;
+        padding: 0;
+        background: transparent;
+        color: inherit;
+        font: inherit;
+        cursor: pointer;
+      }
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 44px;
+        padding: 0 18px;
+        border: 1px solid transparent;
+        border-radius: 8px;
+        background: var(--brand);
+        color: white;
+        font-weight: 750;
+        cursor: pointer;
+      }
+      .button.secondary {
+        border-color: var(--line);
+        background: var(--panel);
+        color: var(--ink);
+      }
+      .hero {
+        overflow: hidden;
+        background:
+          linear-gradient(125deg, rgba(223, 244, 236, 0.95), rgba(251, 250, 247, 0.8)),
+          radial-gradient(circle at 78% 32%, rgba(242, 199, 104, 0.42), transparent 28%);
+      }
+      .hero-inner {
+        min-height: calc(100vh - 72px);
+        padding: 72px 0 56px;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(320px, 440px);
+        gap: 56px;
+        align-items: center;
+      }
+      .hero-tools {
+        display: inline-flex;
+        gap: 6px;
+        padding: 4px;
+        margin-bottom: 24px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.72);
+      }
+      .lang-button {
+        min-width: 42px;
+        min-height: 34px;
+        border: 0;
+        border-radius: 6px;
+        background: transparent;
+        color: var(--muted);
+        font-weight: 800;
+        cursor: pointer;
+      }
+      .lang-button.active {
+        background: var(--brand);
+        color: white;
+      }
+      .eyebrow {
+        margin: 0 0 14px;
+        color: var(--brand-dark);
+        font-weight: 800;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+        letter-spacing: 0.08em;
+      }
+      h1, h2, h3, p { margin-top: 0; }
+      h1 {
+        margin-bottom: 20px;
+        font-size: clamp(3rem, 7vw, 5.9rem);
+        line-height: 0.94;
+      }
+      h2 {
+        margin-bottom: 16px;
+        font-size: clamp(2rem, 4vw, 3.4rem);
+        line-height: 1.02;
+      }
+      h3 { margin-bottom: 10px; font-size: 1.15rem; }
+      .lead {
+        max-width: 660px;
+        color: var(--muted);
+        font-size: clamp(1.08rem, 2vw, 1.32rem);
+        line-height: 1.6;
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 28px;
+      }
+      .trust-list {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 12px;
+        margin-top: 42px;
+      }
+      .trust-item, .card, .phone-preview {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.84);
+      }
+      .trust-item { padding: 16px; font-weight: 750; }
+      .trust-item span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 500;
+      }
+      .phone-preview { padding: 18px; box-shadow: var(--shadow); }
+      .phone-screen {
+        overflow: hidden;
+        min-height: 620px;
+        border-radius: 8px;
+        background: var(--ink);
+        color: white;
+      }
+      .match-card {
+        min-height: 420px;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        background:
+          linear-gradient(180deg, transparent 10%, rgba(20, 32, 29, 0.86) 78%),
+          linear-gradient(135deg, #91d2c2, #f5b7a8);
+      }
+      .match-card strong { font-size: 2rem; }
+      .mini-stack { padding: 16px; display: grid; gap: 10px; }
+      .mini-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 14px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.82);
+      }
+      .section { padding: 82px 0; }
+      .section-heading { max-width: 780px; }
+      .grid-3 {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 28px;
+      }
+      .card { padding: 24px; }
+      .card p { color: var(--muted); line-height: 1.65; }
+      .band { background: var(--ink); color: white; }
+      .band .lead, .band .card p { color: rgba(255, 255, 255, 0.72); }
+      .band .card {
+        border-color: rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.06);
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        background: var(--panel);
+      }
+      .footer-inner {
+        padding: 32px 0;
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        color: var(--muted);
+        font-size: 0.95rem;
+      }
+      @media (max-width: 860px) {
+        .bar { align-items: flex-start; padding: 16px 0; flex-direction: column; }
+        nav { width: 100%; overflow-x: auto; padding-bottom: 4px; }
+        .hero-inner, .grid-3, .trust-list { grid-template-columns: 1fr; }
+        .hero-inner { min-height: auto; padding-top: 56px; }
+        .phone-screen { min-height: 520px; }
+        .footer-inner { flex-direction: column; }
+      }
+      @media (max-width: 560px) {
+        .bar, .hero-inner, .section, .footer-inner { width: min(100% - 28px, 1120px); }
+        .button, .actions { width: 100%; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="bar">
+        <a class="brand" href="/">
+          <span class="mark">#</span>
+          <span>Hashdate</span>
+        </a>
+        <nav>
+          <button type="button" onclick="preparing()">서비스 소개</button>
+          <button type="button" onclick="preparing()">안전 정책</button>
+          <button type="button" onclick="preparing()">고객센터</button>
+          <a class="button" href="https://cruise.suaveforge.com/app-debug.apk">앱 다운로드</a>
+        </nav>
+      </div>
+    </header>
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <div>
+            <div class="hero-tools" aria-label="언어 선택">
+              <button id="koButton" class="lang-button active" type="button" onclick="setLanguage('ko')">한</button>
+              <button id="enButton" class="lang-button" type="button" onclick="setLanguage('en')">EN</button>
+            </div>
+            <p class="eyebrow" data-ko="검증 기반 프리미엄 데이팅" data-en="Premium dating, verified by design">검증 기반 프리미엄 데이팅</p>
+            <h1>Hashdate</h1>
+            <p class="lead" data-ko="해시데이트는 신뢰할 수 있는 회원 검증, 선명한 매칭 방식, 안전한 대화를 하나로 묶은 프리미엄 데이팅 서비스입니다." data-en="Hashdate brings verified profiles, intentional discovery, and safer conversations into one premium dating experience.">해시데이트는 신뢰할 수 있는 회원 검증, 선명한 매칭 방식, 안전한 대화를 하나로 묶은 프리미엄 데이팅 서비스입니다.</p>
+            <div class="actions">
+              <a class="button" href="https://cruise.suaveforge.com/app-debug.apk" data-ko="앱 다운로드" data-en="Download app">앱 다운로드</a>
+              <button class="button secondary" type="button" onclick="preparing()" data-ko="안전 기준 보기" data-en="View safety standards">안전 기준 보기</button>
+            </div>
+            <div class="trust-list">
+              <div class="trust-item"><span data-ko="검증" data-en="Verified">검증</span><span data-ko="가입 조건과 프로필 심사" data-en="Eligibility and profile review">가입 조건과 프로필 심사</span></div>
+              <div class="trust-item"><span data-ko="추천" data-en="Curated">추천</span><span data-ko="목적이 분명한 매칭 경험" data-en="Focused member discovery">목적이 분명한 매칭 경험</span></div>
+              <div class="trust-item"><span data-ko="보호" data-en="Protected">보호</span><span data-ko="신고와 운영 검토 체계" data-en="Reporting and moderation">신고와 운영 검토 체계</span></div>
+            </div>
+          </div>
+          <div class="phone-preview">
+            <div class="phone-screen">
+              <div class="match-card">
+                <p class="eyebrow" data-ko="오늘의 추천" data-en="Today's introduction">오늘의 추천</p>
+                <strong data-ko="민아, 31" data-en="Mina, 31">민아, 31</strong>
+                <p data-ko="브랜드 디자이너, 주말 하이커, 진정성 있는 만남을 찾고 있습니다." data-en="Brand designer, weekend hiker, looking for something real.">브랜드 디자이너, 주말 하이커, 진정성 있는 만남을 찾고 있습니다.</p>
+              </div>
+              <div class="mini-stack">
+                <div class="mini-row"><span data-ko="검증 상태" data-en="Verification">검증 상태</span><strong data-ko="완료" data-en="Complete">완료</strong></div>
+                <div class="mini-row"><span data-ko="만남 의향" data-en="Match intent">만남 의향</span><strong data-ko="진지한 관계" data-en="Long-term">진지한 관계</strong></div>
+                <div class="mini-row"><span data-ko="대화 상태" data-en="Conversation">대화 상태</span><strong data-ko="열림" data-en="Unlocked">열림</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="section">
+        <div class="section-heading">
+          <p class="eyebrow" data-ko="서비스 구조" data-en="Service structure">서비스 구조</p>
+          <h2 data-ko="검증이 중요한 데이팅 서비스를 위한 첫 화면." data-en="A public surface for a trust-heavy dating product.">검증이 중요한 데이팅 서비스를 위한 첫 화면.</h2>
+          <p class="lead" data-ko="홈페이지는 회원이 기대하는 핵심 가치를 먼저 보여주고, 앱 다운로드와 가입 흐름으로 자연스럽게 이어지도록 설계했습니다." data-en="The homepage introduces core member values first, then moves people naturally toward the app download and signup flow.">홈페이지는 회원이 기대하는 핵심 가치를 먼저 보여주고, 앱 다운로드와 가입 흐름으로 자연스럽게 이어지도록 설계했습니다.</p>
+        </div>
+        <div class="grid-3">
+          <article class="card"><h3 data-ko="검증 우선" data-en="Verified first">검증 우선</h3><p data-ko="가입 조건, 프로필 심사, 서류 확인, 운영 검토 흐름을 서비스 경험의 일부로 설계합니다." data-en="Eligibility, profile review, document checks, and moderation are treated as part of the product experience.">가입 조건, 프로필 심사, 서류 확인, 운영 검토 흐름을 서비스 경험의 일부로 설계합니다.</p></article>
+          <article class="card"><h3 data-ko="선택형 매칭" data-en="Choice-based matching">선택형 매칭</h3><p data-ko="외모 중심, 프로필 중심, 관심사 기반 흐름을 분리해 회원이 원하는 방식으로 탐색할 수 있게 합니다." data-en="Appearance-first, profile-first, and interest-based paths let members discover people their way.">외모 중심, 프로필 중심, 관심사 기반 흐름을 분리해 회원이 원하는 방식으로 탐색할 수 있게 합니다.</p></article>
+          <article class="card"><h3 data-ko="명확한 과금" data-en="Clear monetization">명확한 과금</h3><p data-ko="다이아 사용, 정보 열람, 프리미엄 호감 기능을 사용자가 이해할 수 있게 안내합니다." data-en="Diamond use, profile unlocks, and premium likes are explained plainly before members choose.">다이아 사용, 정보 열람, 프리미엄 호감 기능을 사용자가 이해할 수 있게 안내합니다.</p></article>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <div class="footer-inner">
+        <span>Hashdate</span>
+        <span>Privacy · Terms · Support · Account deletion</span>
+      </div>
+    </footer>
+    <script>
+      function preparing() {
+        alert('개발중입니다.');
+      }
+      function setLanguage(language) {
+        document.querySelectorAll('[data-ko][data-en]').forEach(function (node) {
+          node.textContent = node.dataset[language];
+        });
+        document.getElementById('koButton').classList.toggle('active', language === 'ko');
+        document.getElementById('enButton').classList.toggle('active', language === 'en');
+        document.documentElement.lang = language === 'ko' ? 'ko' : 'en';
+      }
+    </script>
+  </body>
+</html>

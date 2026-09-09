@@ -1,0 +1,25 @@
+name: Integrate SiteHub p38 once
+on:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/sitehub-p38-once.yml']
+permissions:
+  contents: write
+jobs:
+  patch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Patch exact Pages source
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p=Path('apps/homepage/static/index.html'); h=p.read_text(encoding='utf-8')
+          if 'data-sitehub-project="p38"' in h: raise SystemExit(0)
+          block='''\n<link rel="canonical" href="https://date.suaveforge.com/" />\n<meta property="og:title" content="Hashdate" />\n<meta property="og:description" content="검증된 사람들과 더 진지하게 만나는 프리미엄 데이팅 앱 Hashdate." />\n<meta property="og:image" content="https://sitehub.suaveforge.com/assets/namecard-default.png" />\n<meta property="og:url" content="https://date.suaveforge.com/" />\n<meta property="og:site_name" content="SuaveForge" />\n<meta name="twitter:card" content="summary_large_image" />\n<script async src="https://sitehub.suaveforge.com/analytics-loader.js" data-sitehub-project="p38"></script>\n'''
+          h=h.replace('</head>',block+'</head>',1); p.write_text(h,encoding='utf-8')
+          PY
+          git config user.name 'SuaveForge SiteHub'
+          git config user.email '53187583+programmer119@users.noreply.github.com'
+          git add apps/homepage/static/index.html
+          git diff --cached --quiet || (git commit -m 'Integrate SiteHub p38' && git push)
